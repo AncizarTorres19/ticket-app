@@ -22,30 +22,30 @@ const tailLayout = {
 export const Ingresar = () => {
 
     const history = useHistory();
-    const [usuario] = useState(getUsuarioStorage());
+    const [user] = useState(getUsuarioStorage());
 
     useHideMenu(false);
 
-    const onFinish = ({ agente, escritorio }) => {
+    const onFinish = ({ attended, desktop }) => {
 
-        localStorage.setItem('agente', agente);
-        localStorage.setItem('escritorio', escritorio);
+        localStorage.setItem('attended', attended);
+        localStorage.setItem('desktop', desktop);
 
-        history.push('/escritorio');
+        history.push('/desktop');
     };
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
     };
 
-    if (usuario.agente && usuario.escritorio) {
-        return <Redirect to="/escritorio" />
+    if (user.attended && user.desktop) {
+        return <Redirect to="/desktop" />
     }
 
     return (
         <>
             <Title level={2}>Ingresar</Title>
-            <Text>Ingrese su nombre y número de escritorio</Text>
+            <Text>Ingrese su nombre y número de desktop</Text>
             <Divider />
 
             <Form
@@ -56,8 +56,8 @@ export const Ingresar = () => {
                 onFinishFailed={onFinishFailed}
             >
                 <Form.Item
-                    label="Nombre del agente"
-                    name="agente"
+                    label="Nombre del attended"
+                    name="attended"
                     rules={[{ required: true, message: 'Por favor ingrese su nombre' }]}
                 >
                     <Input />
@@ -65,8 +65,8 @@ export const Ingresar = () => {
 
                 <Form.Item
                     label="Escritorio"
-                    name="escritorio"
-                    rules={[{ required: true, message: 'Ingrese el número de escritorio' }]}
+                    name="desktop"
+                    rules={[{ required: true, message: 'Ingrese el número de desktop' }]}
                 >
                     <InputNumber min={1} max={99} />
                 </Form.Item>

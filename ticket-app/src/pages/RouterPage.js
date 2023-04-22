@@ -69,7 +69,7 @@ export const RouterPage = () => {
               <Route path="/cola" component={Cola} />
               <Route path="/crear" component={CrearTicket} />
 
-              <Route path="/escritorio" component={Escritorio} />
+              <Route path="/desktop" component={Escritorio} />
 
               <Redirect to="/ingresar" />
 
